@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Glow&Girl.in</title>
+	<link rel="stylesheet" href="gg.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body> 
+
+<nav class="navbar">
+  <div class="logo">
+    Glow<span class="pop">& Girl</span>
+  </div>
+
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" placeholder="Search products...">
+  </div>
+
+  <div class="navbar-icons">
+
+	 <button class="icon-btn home" aria-label="Home">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    </button>
+
+    <button class="icon-btn" aria-label="Wishlist">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+      <span class="badge">3</span>
+    </button>
+
+    <button class="icon-btn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      <span class="badge">2</span>
+    </button>
+
+    <button class="icon-btn profile" aria-label="Profile">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+	
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-slider">
+    <div class="hero-slide active">
+      <img src="slides1.jpg" alt="New skincare arrivals">
+      <div class="hero-content">
+        <span class="hero-eyebrow">New in</span>
+        <h1>Glow starts here</h1>
+        <p>Discover skincare made for your everyday routine</p>
+        <a href="#" class="hero-btn">Shop now</a>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <img src="slides2.jpg" alt="Summer sale">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Limited time</span>
+        <h1>Up to 40% off</h1>
+        <p>Our biggest sale on bestselling essentials</p>
+        <a href="#" class="hero-btn">Shop sale</a>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <img src="slides3.jpg" alt="Skincare routine">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Editor's pick</span>
+        <h1>Build your routine</h1>
+        <p>Curated sets for every skin type</p>
+        <a href="#" class="hero-btn">Explore sets</a>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <img src="slides4.jpg" alt="Clean beauty">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Clean beauty</span>
+        <h1>Kind to your skin</h1>
+        <p>Cruelty-free, dermatologist-tested formulas</p>
+        <a href="#" class="hero-btn">Learn more</a>
+      </div>
+    </div>
+
+    <button class="hero-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="hero-arrow next" onclick="changeSlide(1)">&#10095;</button>
+
+    <div class="hero-dots"></div>
+  </div>
+</section>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dotsContainer = document.querySelector('.hero-dots');
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.classList.add('hero-dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.hero-dot');
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+}
+
+function changeSlide(direction) {
+  currentSlide = (currentSlide + direction + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  showSlide(currentSlide);
+}
+
+setInterval(() => changeSlide(1), 5000);
+</script>
+
+
+<section class="categories">
+  <div class="categories-header">
+    <span class="categories-eyebrow">Explore</span>
+    <h2>Shop by category</h2>
+  </div>
+
+  <div class="categories-grid">
+    <a href="#" class="category-card">
+      <div class="category-circle">
+        <img src="category-skincare.jpg" alt="Skincare">
+      </div>
+      <h3>SkinCare</h3>
+    </a>
+
+    <a href="#" class="category-card">
+      <div class="category-circle">
+        <img src="category-makeup.jpg" alt="Makeup">
+      </div>
+      <h3>MakeUp</h3>
+    </a>
+
+    <a href="#" class="category-card">
+      <div class="category-circle">
+        <img src="category-haircare.jpg" alt="Haircare">
+      </div>
+      <h3>HairCare</h3>
+    </a>
+
+    <a href="#" class="category-card">
+      <div class="category-circle">
+        <img src="category-body.jpg" alt="Gift sets">
+      </div>
+      <h3>BodyCare</h3>
+    </a>
+  </div>
+
+</section>
+
+<section class="products">
+  <div class="products-header">
+    <span class="products-eyebrow">Bestsellers</span>
+    <h2>Loved by Our Customers</h2>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">
+        <img src="product1.jpg" alt="Vitamin C Serum">
+        <span class="product-badge sale">New</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Serum</p>
+        <h3>Vitamin C Brightening Serum</h3>
+        <div class="product-rating">★★★★★ <span>(128)</span></div>
+        <div class="product-price">
+          <span class="price-current">$32.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="product2.jpg" alt="Hydrating Moisturizer">
+        <span class="product-badge sale">Offer</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Moisturizer</p>
+        <h3>Hydrating Daily Moisturizer</h3>
+        <div class="product-rating">★★★★★ <span>(96)</span></div>
+        <div class="product-price">
+          <span class="price-current">$28.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="product3.jpg" alt="Gentle Cleanser">
+        <span class="product-badge sale">Sale</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Cleanser</p>
+        <h3>Gentle Foaming Cleanser</h3>
+        <div class="product-rating">★★★★☆ <span>(74)</span></div>
+        <div class="product-price">
+          <span class="price-current">$18.00</span>
+          <span class="price-old">$24.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="product4.jpg" alt="Night Repair Cream">
+	<span class="product-badge sale">Buy Now</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Night care</p>
+        <h3>Overnight Repair Cream</h3>
+        <div class="product-rating">★★★★★ <span>(152)</span></div>
+        <div class="product-price">
+          <span class="price-current">$36.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-footer">
+    <a href="#" class="view-all-btn">View all products</a>
+  </div>
+</section> 
+
+
+<section class="combos">
+<div class="combos-header">
+  <span class="combo-eyebrow">combos</span>
+  <h2>Save More with Our Bundles</h2>
+</div>
+
+  <div class="combos-grid">
+    <div class="combo-card">
+      <div class="combo-img">
+        <img src="combo1.jpg" alt="Vitamin C Serum">
+         <span class="combo-badge sale">New</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="combo-info">
+        <h3>Moisturizing Shampoo & Nourishing Conditioner</h3>
+        <div class="product-rating">★★★★★ <span>(128)</span></div>
+        <div class="product-price">
+          <span class="price-current">$59.00</span>
+          <span class="price-old">$80.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+
+    <div class="combo-card">
+      <div class="combo-img">
+        <img src="combo2.jpg" alt="Hydrating Moisturizer">
+         <span class="combo-badge sale">Limited Offer</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="combo-info">
+        <h3>Cleanser Serum Moisturizer Sunscreen</h3>
+        <div class="combo-rating">★★★★★ <span>(96)</span></div>
+        <div class="combo-price">
+          <span class="price-current">$99.00</span>
+          <span class="price-old">$170.00</span>
+
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+
+    <div class="combo-card">
+      <div class="combo-img">
+        <img src="combo3.jpg" alt="Gentle Cleanser">
+        <span class="combo-badge sale">Sale</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="combo-info">
+                <h3>Hylouronic Acid + Niacinamide Serum</h3>
+        <div class="combo-rating">★★★★☆ <span>(74)</span></div>
+        <div class="combo-price">
+          <span class="price-current">$80.00</span>
+          <span class="price-old">$120.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+
+    <div class="combo-card">
+      <div class="combo-img">
+        <img src="combo4.jpg" alt="Night Repair Cream">
+         <span class="combo-badge sale">Big Deal</span>
+        <button class="wishlist-btn">&#9825;</button>
+      </div>
+      <div class="combo-info">
+        <p class="combo-category">Night care</p>
+        <h3>SPF 50+ Sunscreen pack of 3</h3>
+        <div class="combo-rating">★★★★★ <span>(152)</span></div>
+        <div class="combo-price">
+          <span class="price-current">$39.00</span>
+          <span class="price-old">$70.00</span>
+        </div>
+        <button class="add-cart-btn">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+ <div class="products-footer">
+    <a href="#" class="view-all-btn">View all combos</a>
+  </div>
+</section> 
+
+<section class="ba-section">
+  <h2 class="ba-section__title">BEFORE AND AFTER</h2>
+  <h3 class="ba-section__subtitle">Real results after four weeks of consistent use</h3>
+
+  <div class="ba-slider" id="baSlider">
+    <div class="ba-slider__img ba-slider__img--before" id="baBefore">
+      <img src="after-img.jpg" alt="Before" draggable="false">
+      <span class="ba-label ba-label--before">After</span>
+    </div>
+
+    <div class="ba-slider__img ba-slider__img--after" id="baAfter">
+      <img src="before-img.jpeg" alt="After" draggable="false">
+      <span class="ba-label ba-label--after">Before</span>
+    </div>
+
+    <div class="ba-handle" id="baHandle">
+      <div class="ba-handle__line"></div>
+      <div class="ba-handle__circle">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4A3F6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (function() {
+    const slider = document.getElementById('baSlider');
+    const after = document.getElementById('baAfter');
+    const handle = document.getElementById('baHandle');
+    let dragging = false;
+
+    function setPosition(clientX) {
+      const rect = slider.getBoundingClientRect();
+      let x = clientX - rect.left;
+      x = Math.max(0, Math.min(x, rect.width));
+      const percent = (x / rect.width) * 100;
+      after.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+      handle.style.left = percent + '%';
+    }
+
+    function onDown(e) {
+      dragging = true;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(x);
+    }
+
+    function onMove(e) {
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(x);
+    }
+
+    function onUp() {
+      dragging = false;
+    }
+
+    slider.addEventListener('mousedown', onDown);
+    slider.addEventListener('touchstart', onDown, { passive: true });
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, { passive: true });
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchend', onUp);
+  })();
+</script>
+
+<section class="cs-section">
+  <p class="cs-eyebrow">As Seen In</p>
+  <h2 class="cs-heading">Community Stories</h2>
+
+  <div class="cs-carousel-wrap">
+    <button class="cs-arrow cs-arrow-left" aria-label="Scroll left">&#8249;</button>
+
+    <div class="cs-track" id="csTrack">
+
+      <!-- Card 1 -->
+      <article class="cs-card">
+        <div class="cs-media">
+               <video class="cs-video" src="images/video11.mp4" poster="your-poster-1.jpg" muted playsinline></video>
+          <button class="cs-mute" aria-label="Toggle sound">🔈</button>
+         </div>
+        <a class="cs-tag" href="#">
+          <span class="cs-tag-icon">🧴</span>
+          <span class="cs-tag-name">GG Conditioner</span>
+          <span class="cs-tag-price">Rs. 547 <s>Rs. 647</s></span>
+        </a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="cs-card">
+        <div class="cs-media">
+         <video class="cs-video" src="images/video22.mp4" poster="your-poster-1.jpg" muted playsinline></video>
+          <button class="cs-mute" aria-label="Toggle sound">🔈</button>
+         
+        </div>
+        <a class="cs-tag" href="#">
+          <span class="cs-tag-icon">🛍️</span>
+          <span class="cs-tag-name">GG Serum</span>
+          <span class="cs-tag-price">Rs. 239 <s>Rs. 314</s></span>
+        </a>
+      </article>
+
+      <!-- Card 3 (tall, center) -->
+      <article class="cs-card cs-card-tall">
+        <div class="cs-media">
+		<video class="cs-video" src="images/video33.mp4" poster="your-poster-1.jpg" muted playsinline></video>
+          <button class="cs-mute" aria-label="Toggle sound">🔈</button>
+         
+
+          </div>
+        <a class="cs-tag" href="#">
+          <span class="cs-tag-icon">🌞</span>
+          <span class="cs-tag-name">GG Sunscreen</span>
+          <span class="cs-tag-price">Rs. 347 <s>Rs. 457</s></span>
+        </a>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="cs-card">
+        <div class="cs-media">
+          <video class="cs-video" src="images/video4.mp4" poster="your-poster-1.jpg" muted playsinline></video>
+          <button class="cs-mute" aria-label="Toggle sound">🔈</button>
+         
+        </div>
+        <a class="cs-tag" href="#">
+          <span class="cs-tag-icon">💄</span>
+          <span class="cs-tag-name">GG Lip gloss</span>
+          <span class="cs-tag-price">Rs. 299 <s>Rs. 474</s></span>
+        </a>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="cs-card">
+        <div class="cs-media">
+          <video class="cs-video" src="images/video5.mp4" poster="your-poster-1.jpg" muted playsinline></video>
+          <button class="cs-mute" aria-label="Toggle sound">🔈</button>
+                 </div>
+        <a class="cs-tag" href="#">
+          <span class="cs-tag-icon">💧</span>
+          <span class="cs-tag-name">GG Moisturizer</span>
+          <span class="cs-tag-price">Rs. 450 <s>Rs. 679</s></span>
+        </a>
+      </article>
+
+    </div>
+
+    <button class="cs-arrow cs-arrow-right" aria-label="Scroll right">&#8250;</button>
+  </div>
+<div class="cs-dots" id="csDots"></div>
+</section>
+
+</style>
+
+<script>
+(function(){
+  var track = document.getElementById('csTrack');
+  var dotsWrap = document.getElementById('csDots');
+  var left = document.querySelector('.cs-arrow-left');
+  var right = document.querySelector('.cs-arrow-right');
+  if(!track) return;
+
+  var cards = Array.prototype.slice.call(track.querySelectorAll('.cs-card'));
+  var videos = cards.map(function(card){ return card.querySelector('.cs-video'); });
+  var current = 0;
+  var isPaused = false;
+
+  cards.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.className = 'cs-dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.addEventListener('click', function(){ goToSlide(i); });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.cs-dot'));
+
+  function updateDots(){
+    dots.forEach(function(d, i){ d.classList.toggle('is-active', i === current); });
+  }
+
+  // Only the active slide's video plays; every other video is paused and reset
+  function playCurrentVideo(){
+    videos.forEach(function(v, i){
+      if(!v) return;
+      if(i === current){
+        if(!isPaused){
+          v.currentTime = 0;
+          var playPromise = v.play();
+          if(playPromise && playPromise.catch){ playPromise.catch(function(){}); }
+        }
+      } else {
+        v.pause();
+        v.currentTime = 0;
+      }
+    });
+  }
+
+  function goToSlide(index){
+    current = (index + cards.length) % cards.length;
+    var card = cards[current];
+    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    updateDots();
+    playCurrentVideo();
+  }
+
+  function nextSlide(){ goToSlide(current + 1); }
+  function prevSlide(){ goToSlide(current - 1); }
+
+  left && left.addEventListener('click', prevSlide);
+  right && right.addEventListener('click', nextSlide);
+
+  // Move to the next slide once the active video finishes playing
+  videos.forEach(function(v, i){
+    if(!v) return;
+    v.addEventListener('ended', function(){
+      if(i === current) nextSlide();
+    });
+  });
+
+  var wrap = document.querySelector('.cs-carousel-wrap');
+  wrap.addEventListener('mouseenter', function(){
+    isPaused = true;
+    var v = videos[current];
+    if(v) v.pause();
+  });
+  wrap.addEventListener('mouseleave', function(){
+    isPaused = false;
+    var v = videos[current];
+    if(v){ var p = v.play(); if(p && p.catch){ p.catch(function(){}); } }
+  });
+  wrap.addEventListener('touchstart', function(){
+    isPaused = true;
+    var v = videos[current];
+    if(v) v.pause();
+  }, { passive: true });
+  wrap.addEventListener('touchend', function(){
+    setTimeout(function(){
+      isPaused = false;
+      var v = videos[current];
+      if(v){ var p = v.play(); if(p && p.catch){ p.catch(function(){}); } }
+    }, 1500);
+  });
+
+  playCurrentVideo(); // play the first slide's video on load
+
+  document.querySelectorAll('.cs-mute').forEach(function(btn){
+    var video = btn.previousElementSibling;
+    btn.addEventListener('click', function(){
+      video.muted = !video.muted;
+      btn.innerHTML = video.muted ? '&#128264;' : '&#128266;';
+    });
+  });
+})();
+
+</script>
+
+
+
+
+<section class="trust-bar">
+    <p class="trust-bar__subtitle">Girl&Glow</p>
+    <h2 class="trust-bar__heading">Trusted By</h2>
+
+  <div class="trust-bar__grid">
+    <div class="trust-bar__item">
+      <div class="trust-bar__circle trust-bar__circle--filled">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M24 26c-2-8-1-14 3-16 3 4 4 9 4 14M40 26c2-8 1-14-3-16-3 4-4 9-4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="32" cy="36" rx="14" ry="12" stroke="currentColor" stroke-width="2"/>
+  <path d="M20 42c-3 4-3 8 0 10s7-1 8-5M44 42c3 4 3 8 0 10s-7-1-8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="27" cy="34" r="1.4" fill="currentColor"/>
+  <circle cx="37" cy="34" r="1.4" fill="currentColor"/>
+  <path d="M31 38h2l-1 2z" fill="currentColor"/>
+</svg>
+      </div>
+      <span class="trust-bar__label">Cruelty-Free</span>
+    </div>
+
+    <div class="trust-bar__item">
+      <div class="trust-bar__circle trust-bar__circle--filled">
+
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 10c8 4 14 5 14 5v13c0 12-6 19-14 24-8-5-14-12-14-24V15s6-1 14-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M25 32l5 5 9-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="trust-bar__label">Derm Tested</span>
+    </div>
+
+    <div class="trust-bar__item trust-bar__item--accent">
+      <div class="trust-bar__circle trust-bar__circle--filled">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="16" y="26" width="32" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M22 26v-4a10 10 0 0 1 20 0v4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="32" cy="36" r="3" fill="currentColor"/>
+          <path d="M32 39v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="trust-bar__label">Secure Checkout</span>
+    </div>
+
+    <div class="trust-bar__item">
+      <div class="trust-bar__circle trust-bar__circle--filled">
+
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 24h28v18H10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M38 30h9l7 7v5h-16z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="21" cy="45" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="45" cy="45" r="4" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="trust-bar__label">Free Shipping</span>
+    </div>
+  </div>
+<style>
+.trust-bar {
+  --cream-bg: #FDF8F1;
+  --ink: #221D1A;
+  --accent-purple: #6C4CE0;
+  --accent-soft: #E4DCFB;
+  --circle-border: #ECE6DC;
+ display: flex !important; 
+ flex-direction: column !important;
+  background: var(--cream-bg);
+  padding: 64px 24px 72px;
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.trust-bar__eyebrow {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-purple);
+}
+
+.trust-bar__heading {
+  margin: 0 0 44px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.trust-bar__grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.trust-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px;
+}
+
+.trust-bar__circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--circle-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-bar__circle svg {
+  width: 52px;
+  height: 52px;
+}
+
+.trust-bar__circle--filled {
+  background: var(--accent-soft);
+  border-color: var(--accent-soft);
+  color: var(--accent-purple);
+}
+
+.trust-bar__item:hover .trust-bar__circle {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(34, 29, 26, 0.08);
+}
+
+.trust-bar__label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .trust-bar__grid {
+    gap: 28px;
+  }
+  .trust-bar__item {
+    width: 100px;
+  }
+  .trust-bar__circle {
+    width: 96px;
+    height: 96px;
+  }
+  .trust-bar__circle svg {
+    width: 40px;
+    height: 40px;
+  }
+  .trust-bar__heading {
+    font-size: 26px;
+  }
+}
+</style>
+</section>
+
+
+
+<section class="testimonials">
+  <div class="testimonials-header">
+    <span class="testimonials-eyebrow">Reviews</span>
+    <h2>What our customers say</h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-rating">★★★★★</div>
+      <p class="testimonial-text">"My skin has never felt this soft. The Vitamin C serum completely changed my morning routine."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <p class="author-name">Aisha K.</p>
+          <p class="author-role">Verified buyer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-rating">★★★★★</div>
+      <p class="testimonial-text">"Fast shipping, beautiful packaging, and the moisturizer smells amazing. Already reordering."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">M</div>
+        <div>
+          <p class="author-name">Maria L.</p>
+          <p class="author-role">Verified buyer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+  <div class="testimonial-rating">★★★★★</div>
+  <p class="testimonial-text">"Overnight cream is a game changer — I wake up with soft, hydrated skin every morning."</p>
+  <div class="testimonial-author">
+    <div class="author-avatar">P</div>
+    <div>
+      <p class="author-name">Priya N.</p>
+      <p class="author-role">Verified buyer</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="founder-v2">
+  
+  <h2 class="founder-v2__heading">The face behind Glow & Girl</h2>
+
+  <div class="founder-v2__photo">
+    <img src="founder-img.jpg" alt="Yasmin, Founder of Glow&Girl" draggable="false">
+  </div>
+
+  <p class="founder-v2__quote">
+    "I started Glow & Girl because I couldn't find skincare that treated my
+    skin like it deserved better than trends. Every formula on this site
+    is one I use myself, tested until it earned its place on my own shelf."
+  </p>
+
+  <h3 class="founder-v2__name">Yasmin</h3>
+  <p class="founder-v2__role">Founder &amp; Formulator, Glow & Girl</p>
+
+  <div class="founder-v2__stats">
+    <div class="founder-v2__stat">
+      <span class="founder-v2__stat-num">2021</span>
+      <span class="founder-v2__stat-label">Founded</span>
+    </div>
+    <div class="founder-v2__divider"></div>
+    <div class="founder-v2__stat">
+      <span class="founder-v2__stat-num">40+</span>
+      <span class="founder-v2__stat-label">Formulas tested</span>
+    </div>
+    <div class="founder-v2__divider"></div>
+    <div class="founder-v2__stat">
+      <span class="founder-v2__stat-num">100%</span>
+      <span class="founder-v2__stat-label">Self-tested first</span>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="site-footer__top">
+
+    <div class="site-footer__brand">
+      <div class="site-footer__logo">Glow<span class="site-footer__logo-accent">&Girl</span></div>
+      <p class="site-footer__tagline">Skincare tested on real skin, not just claims. Formulated in small batches, worn every day.</p>
+      <div class="site-footer__social">
+        <a href="#" aria-label="Instagram" class="site-footer__social-icon"><i class="ti ti-brand-instagram"></i></a>
+        <a href="#" aria-label="Facebook" class="site-footer__social-icon"><i class="ti ti-brand-facebook"></i></a>
+        <a href="#" aria-label="Pinterest" class="site-footer__social-icon"><i class="ti ti-brand-pinterest"></i></a>
+        <a href="#" aria-label="TikTok" class="site-footer__social-icon"><i class="ti ti-brand-tiktok"></i></a>
+      </div>
+    </div>
+
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">Shop</h3>
+      <a href="#">Skincare</a>
+      <a href="#">Makeup</a>
+      <a href="#">Haircare</a>
+      <a href="#">Bodycare</a>
+      <a href="#">Combos</a>
+    </div>
+
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">Help</h3>
+      <a href="#">Track order</a>
+      <a href="#">Shipping info</a>
+      <a href="#">Returns and exchanges</a>
+      <a href="#">FAQs</a>
+      <a href="#">Contact us</a>
+    </div>
+
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">Company</h3>
+      <a href="#">Our story</a>
+      <a href="#">Ingredients</a>
+      <a href="#">Reviews</a>
+      <a href="#">Careers</a>
+    </div>
+
+    <div class="site-footer__newsletter">
+      <h3 class="site-footer__heading">Stay in the loop</h3>
+      <p class="site-footer__newsletter-text">Get 10% off your first order and skincare tips in your inbox.</p>
+      <form class="site-footer__form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>&copy; 2026 Glow&Girl. All rights reserved.</p>
+    <div class="site-footer__legal">
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of service</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
