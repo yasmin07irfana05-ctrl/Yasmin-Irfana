@@ -9,7 +9,7 @@
 
   *{ margin:0; padding:0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-  body{ background: #faf8fc; }
+  body{ background: #faf8fc; overflow-x: hidden; }
 
   .navbar{
     display:flex;
@@ -277,6 +277,16 @@
   .hero-content { left: 6%; max-width: 90%; }
 }
 
+@media (max-width: 480px) {
+  .hero { height: 340px; }
+  .hero-content h1 { font-size: 24px; }
+  .hero-content p { font-size: 14px; margin-bottom: 18px; }
+  .hero-btn { padding: 10px 22px; font-size: 13px; }
+  .hero-arrow { width: 34px; height: 34px; font-size: 13px; }
+  .hero-arrow.prev { left: 10px; }
+  .hero-arrow.next { right: 10px; }
+}
+
 .products {
   padding: 60px 8%;
   background: #FFFBF7;
@@ -466,9 +476,7 @@ font-size: 32px;
 }
 
 @media (max-width: 576px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
+  .products { padding: 44px 6% 52px; }
 }
 
 .categories {
@@ -544,6 +552,7 @@ font-size: 32px;
 }
 
 @media (max-width: 576px) {
+  .categories { padding: 40px 6%; }
   .categories-grid {
     gap: 24px;
   }
@@ -746,8 +755,29 @@ margin:0 0 30px;
 }
 
 @media (max-width: 576px) {
+  .testimonials { padding: 44px 6% 52px; }
+
   .testimonials-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding-bottom: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-card {
+    flex: 0 0 260px;
+    max-width: 260px;
+    min-width: 0;
+    scroll-snap-align: start;
+    padding: 20px;
   }
 }
 
@@ -932,14 +962,37 @@ margin:0 0 36px;
 }
 
 @media (max-width: 992px) {
-  .products-grid {
+  .products-grid,
+  .combos-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 576px) {
-  .products-grid {
-    grid-template-columns: 1fr;
+  .combos { padding: 44px 6% 52px; }
+
+  .products-grid,
+  .combos-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding-bottom: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .products-grid::-webkit-scrollbar,
+  .combos-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-card,
+  .combo-card {
+    flex: 0 0 200px;
+    max-width: 200px;
+    min-width: 0;
+    scroll-snap-align: start;
   }
 }
 
@@ -1059,8 +1112,12 @@ margin:0 0 36px;
   }
 
   @media (max-width: 600px) {
+    .ba-section { padding: 44px 16px; }
     .ba-section__title {
       font-size: 22px;
+    }
+    .ba-section__subtitle {
+      font-size: 18px;
     }
     .ba-handle__circle {
       width: 34px;
@@ -1070,13 +1127,7 @@ margin:0 0 36px;
 
 
 .founder-v2 {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
+    width: 100%;
     background: #FBF4EC;
     padding: 80px 24px;
     box-sizing: border-box;
@@ -1179,8 +1230,14 @@ margin:0 0 36px;
   }
 
   @media (max-width: 500px) {
+    .founder-v2 { padding: 56px 20px; }
     .founder-v2__heading {
       font-size: 24px;
+    }
+
+    .founder-v2__photo {
+      width: 140px;
+      height: 140px;
     }
 
     .founder-v2__quote {
@@ -1189,6 +1246,10 @@ margin:0 0 36px;
 
     .founder-v2__stats {
       gap: 20px;
+    }
+
+    .founder-v2__stat-num {
+      font-size: 18px;
     }
   }
 
@@ -1200,7 +1261,7 @@ margin:0 0 36px;
     font-family: 'Segoe UI', sans-serif;
     border-top: 1px solid #EDE6D8;
     box-sizing: border-box;
-    margin-top: ;20px;
+    margin-top: 20px;
   }
 
   .site-footer__top {
@@ -1357,6 +1418,8 @@ margin:0 0 36px;
   }
 
   @media (max-width: 500px) {
+    .site-footer { padding: 48px 20px 0; }
+
     .site-footer__top {
       grid-template-columns: 1fr;
     }
@@ -1364,6 +1427,10 @@ margin:0 0 36px;
     .site-footer__brand,
     .site-footer__newsletter {
       grid-column: span 1;
+    }
+
+    .site-footer__form {
+      flex-direction: column;
     }
 
     .site-footer__bottom {
@@ -1580,11 +1647,9 @@ margin:0 0 36px;
 .cs-arrow:hover{ background:var(--cs-purple); color:#fff; }
 
 @media (max-width:640px){
+  .cs-section { padding: 44px 16px 52px; }
   .cs-arrow{ display:none; }
   .cs-heading{ font-size:26px; }
   .cs-card{ flex-basis:170px; }
   .cs-card-tall{ flex-basis:180px; }
 }
-
-
-
